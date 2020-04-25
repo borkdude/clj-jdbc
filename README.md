@@ -6,6 +6,11 @@
 
 Hypothetical command line tool around Clojure database interaction via JDBC.
 
+Supported databases:
+
+ - PostgresQL
+ - HSQLDB
+
 Example:
 
 `jdbc.clj`:
