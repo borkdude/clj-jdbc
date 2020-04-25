@@ -35,6 +35,10 @@ $ clj-jdbc jdbc.clj
 [{:FOO/X 6}]
 ```
 
+## Installation
+
+Currently there is one SNAPSHOT release available for macOS [here](https://github.com/borkdude/clj-jdbc/releases/tag/0.0.1-SNAPSHOT). The other way of installing this is building yourself via `script/compile`.
+
 ## Usage
 
 ``` shellsession
