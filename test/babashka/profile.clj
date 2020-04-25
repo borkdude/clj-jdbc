@@ -1,5 +1,5 @@
-(ns babashka.profile
-  (:require [babashka.main :as main]))
+(ns clj-jdbc.profile
+  (:require [clj-jdbc.main :as main]))
 
 (comment)
 

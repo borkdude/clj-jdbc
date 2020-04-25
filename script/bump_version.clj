@@ -36,8 +36,8 @@
          (System/exit exit-code))
        string-out))))
 
-(def version-file (io/file "resources" "BABASHKA_VERSION"))
-(def released-version-file (io/file "resources" "BABASHKA_RELEASED_VERSION"))
+(def version-file (io/file "resources" "CLJ-JDBC_VERSION"))
+(def released-version-file (io/file "resources" "CLJ-JDBC_RELEASED_VERSION"))
 
 (case (first *command-line-args*)
   "release" (let [version-string (str/trim (slurp version-file))

@@ -4,10 +4,10 @@ version: "v-{build}"
 
 image: Visual Studio 2015
 
-clone_folder: C:\projects\babashka
+clone_folder: C:\projects\clj-jdbc
 
 environment:
-  GRAALVM_HOME: C:\projects\babashka\graalvm\graalvm-ce-java8-19.3.0
+  GRAALVM_HOME: C:\projects\clj-jdbc\graalvm\graalvm-ce-java8-19.3.0
 
 cache:
   - C:\ProgramData\chocolatey\lib -> project.clj, appveyor.yml
@@ -57,5 +57,5 @@ build_script:
 #     call script/test.bat
 
 # artifacts:
-# - path: babashka-*-windows-amd64.zip
-#   name: babashka
+# - path: clj-jdbc-*-windows-amd64.zip
+#   name: clj-jdbc

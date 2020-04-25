@@ -1,6 +1,6 @@
-(ns babashka.impl.clojure.java.shell-test
+(ns clj-jdbc.impl.clojure.java.shell-test
   (:require [clojure.test :as t :refer [deftest is testing]]
-            [babashka.test-utils :as test-utils]
+            [clj-jdbc.test-utils :as test-utils]
             [clojure.string :as str]))
 
 (deftest with-sh-env-test

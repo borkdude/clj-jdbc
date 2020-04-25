@@ -1,6 +1,6 @@
-(ns babashka.test-test
+(ns clj-jdbc.test-test
   (:require
-   [babashka.test-utils :as tu]
+   [clj-jdbc.test-utils :as tu]
    [clojure.string :as str]
    [clojure.test :as t :refer [deftest is]]
    [clojure.java.io :as io]))
@@ -67,5 +67,5 @@
                      "expected: (= 2 (+ 1 2))")))
 
 (deftest assert-expr-test
-  (is (str/includes? (bb (.getPath (io/file "test-resources" "babashka" "assert_expr.clj")))
+  (is (str/includes? (bb (.getPath (io/file "test-resources" "clj-jdbc" "assert_expr.clj")))
                      "3.14 should be roughly 3.141592653589793")))

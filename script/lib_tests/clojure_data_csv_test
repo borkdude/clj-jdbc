@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-if [ "$BABASHKA_TEST_ENV" = "native" ]; then
+if [ "$CLJ-JDBC_TEST_ENV" = "native" ]; then
     BB_CMD="./bb"
 else
     BB_CMD="lein bb"

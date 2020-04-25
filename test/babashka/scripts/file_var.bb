@@ -2,7 +2,7 @@
   (:require [clojure.java.io :as io]))
 
 (require '[file-var-classpath])
-(load-file (io/file "test" "babashka" "scripts" "loaded_by_file_var.bb"))
+(load-file (io/file "test" "clj-jdbc" "scripts" "loaded_by_file_var.bb"))
 (println *file*)
 (defn foo [])
 (println (:file (meta #'foo)))

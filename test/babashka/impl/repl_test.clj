@@ -1,6 +1,6 @@
-(ns babashka.impl.repl-test
+(ns clj-jdbc.impl.repl-test
   (:require
-   [babashka.impl.repl :refer [start-repl!]]
+   [clj-jdbc.impl.repl :refer [start-repl!]]
    [clojure.string :as str]
    [clojure.test :as t :refer [deftest is]]
    [sci.core :as sci]

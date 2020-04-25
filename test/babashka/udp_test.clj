@@ -1,5 +1,5 @@
-(ns babashka.udp-test
-  (:require [babashka.test-utils :as tu]
+(ns clj-jdbc.udp-test
+  (:require [clj-jdbc.test-utils :as tu]
             [clojure.test :refer [deftest is]])
   (:import [java.io StringWriter]
            [java.net DatagramPacket DatagramSocket]))
@@ -19,7 +19,7 @@
                   (println (String. non-zero-bytes "UTF-8")))))]
     (while (not (realized? fut))
       (tu/bb nil
-             "-e" "(load-file (io/file \"test-resources\" \"babashka\" \"statsd.clj\"))"
+             "-e" "(load-file (io/file \"test-resources\" \"clj-jdbc\" \"statsd.clj\"))"
              "-e" "(require '[statsd-client :as c])"
              "-e" "(c/increment :foo)"))
     (is (= ":foo:1|c\n" (str sw)))))

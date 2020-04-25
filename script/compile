@@ -2,8 +2,8 @@
 
 set -eo pipefail
 
-if [ -z "$BABASHKA_XMX" ]; then
-    export BABASHKA_XMX="-J-Xmx4500m"
+if [ -z "$CLJ_JDBC_XMX" ]; then
+    export CLJ_JDBC_XMX="-J-Xmx4500m"
 fi
 
 if [ -z "$GRAALVM_HOME" ]; then
@@ -13,27 +13,27 @@ fi
 
 $GRAALVM_HOME/bin/gu install native-image
 
-BABASHKA_VERSION=$(cat resources/BABASHKA_VERSION)
+CLJ_JDBC_VERSION=$(cat resources/CLJ_JDBC_VERSION)
 
 export JAVA_HOME=$GRAALVM_HOME
 
 SVM_JAR=$(find "$GRAALVM_HOME" | grep svm.jar)
 $GRAALVM_HOME/bin/javac -cp "$SVM_JAR" resources/CutOffCoreServicesDependencies.java
 
-if [ -z "$BABASHKA_JAR" ]; then
+if [ -z "$CLJ_JDBC_JAR" ]; then
    lein with-profiles +reflection do run
    lein do clean, uberjar
-  BABASHKA_JAR=${BABASHKA_JAR:-"target/babashka-$BABASHKA_VERSION-standalone.jar"}
+  CLJ_JDBC_JAR=${CLJ_JDBC_JAR:-"target/clj-jdbc-$CLJ_JDBC_VERSION-standalone.jar"}
 fi
 
-BABASHKA_BINARY=${BABASHKA_BINARY:-"bb"}
+CLJ_JDBC_BINARY=${CLJ_JDBC_BINARY:-"clj-jdbc"}
 
-args=( -jar $BABASHKA_JAR \
-            -H:Name=$BABASHKA_BINARY \
+args=( -jar $CLJ_JDBC_JAR \
+            -H:Name=$CLJ_JDBC_BINARY \
             -H:+ReportExceptionStackTraces \
             -J-Dclojure.spec.skip-macros=true \
             -J-Dclojure.compiler.direct-linking=true \
-            "-H:IncludeResources=BABASHKA_VERSION" \
+            "-H:IncludeResources=CLJ_JDBC_VERSION" \
             "-H:IncludeResources=SCI_VERSION" \
             "-H:IncludeResources=.*.properties|.*sql"
             -H:ReflectionConfigurationFiles=reflection.json \
@@ -48,9 +48,9 @@ args=( -jar $BABASHKA_JAR \
             --no-server \
             --report-unsupported-elements-at-runtime \
             "--initialize-at-run-time=org.postgresql.sspi.SSPIClient" \
-            "$BABASHKA_XMX" )
+            "$CLJ_JDBC_XMX" )
 
-if [ "$BABASHKA_STATIC" = "true" ]; then
+if [ "$CLJ_JDBC_STATIC" = "true" ]; then
     args+=("--static")
 fi
 

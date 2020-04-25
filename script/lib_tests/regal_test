@@ -2,9 +2,9 @@
 
 set -eo pipefail
 
-export BABASHKA_CLASSPATH="$(clojure -Sdeps '{:deps {regal {:git/url "https://github.com/lambdaisland/regal" :sha "b059fdb06d5586a9a04c27e7b011c467ad8546db"}}}' -Spath)"
+export CLJ-JDBC_CLASSPATH="$(clojure -Sdeps '{:deps {regal {:git/url "https://github.com/lambdaisland/regal" :sha "b059fdb06d5586a9a04c27e7b011c467ad8546db"}}}' -Spath)"
 
-if [ "$BABASHKA_TEST_ENV" = "native" ]; then
+if [ "$CLJ-JDBC_TEST_ENV" = "native" ]; then
     BB_CMD="./bb"
 else
     BB_CMD="lein bb"

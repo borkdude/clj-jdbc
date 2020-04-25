@@ -3,7 +3,7 @@
 set -euo pipefail
 
 print_help() {
-    echo "Installs latest version of babashka. Installation directory defaults to /usr/local/bin."
+    echo "Installs latest version of clj-jdbc. Installation directory defaults to /usr/local/bin."
     echo -e
     echo "Usage:"
     echo "installer.sh [<dir>]"
@@ -19,23 +19,23 @@ fi
 
 download_dir=/tmp
 
-latest_release="$(curl -sL https://raw.githubusercontent.com/borkdude/babashka/master/resources/BABASHKA_RELEASED_VERSION)"
+latest_release="$(curl -sL https://raw.githubusercontent.com/borkdude/clj-jdbc/master/resources/CLJ-JDBC_RELEASED_VERSION)"
 
 case "$(uname -s)" in
     Linux*)     platform=linux;;
     Darwin*)    platform=macos;;
 esac
 
-download_url="https://github.com/borkdude/babashka/releases/download/v$latest_release/babashka-$latest_release-$platform-amd64.zip"
+download_url="https://github.com/borkdude/clj-jdbc/releases/download/v$latest_release/clj-jdbc-$latest_release-$platform-amd64.zip"
 
 cd "$download_dir"
 echo -e "Downloading $download_url."
-curl -o "babashka-$latest_release-$platform-amd64.zip" -sL "https://github.com/borkdude/babashka/releases/download/v$latest_release/babashka-$latest_release-$platform-amd64.zip"
-unzip -qqo "babashka-$latest_release-$platform-amd64.zip"
-rm "babashka-$latest_release-$platform-amd64.zip"
+curl -o "clj-jdbc-$latest_release-$platform-amd64.zip" -sL "https://github.com/borkdude/clj-jdbc/releases/download/v$latest_release/clj-jdbc-$latest_release-$platform-amd64.zip"
+unzip -qqo "clj-jdbc-$latest_release-$platform-amd64.zip"
+rm "clj-jdbc-$latest_release-$platform-amd64.zip"
 
 cd "$install_dir"
-if [ -f babashka ]; then
+if [ -f clj-jdbc ]; then
     echo "Moving $install_dir/bb to $install_dir/bb.old"
 fi
 

@@ -1,10 +1,10 @@
-(ns babashka.impl.nrepl-server-test
+(ns clj-jdbc.impl.nrepl-server-test
   (:require
-   [babashka.impl.bencode.core :as bencode]
-   [babashka.impl.nrepl-server :refer [start-server! stop-server!]]
-   [babashka.main :as main]
-   [babashka.test-utils :as tu]
-   [babashka.wait :as wait]
+   [clj-jdbc.impl.bencode.core :as bencode]
+   [clj-jdbc.impl.nrepl-server :refer [start-server! stop-server!]]
+   [clj-jdbc.main :as main]
+   [clj-jdbc.test-utils :as tu]
+   [clj-jdbc.wait :as wait]
    [clojure.test :as t :refer [deftest is testing]]
    [sci.impl.opts :refer [init]])
   (:import [java.lang ProcessBuilder$Redirect]))
@@ -186,10 +186,10 @@
               _ (.redirectError pb ProcessBuilder$Redirect/INHERIT)
               ;; _ (.redirectOutput pb ProcessBuilder$Redirect/INHERIT)
               ;; env (.environment pb)
-              ;; _ (.put env "BABASHKA_DEV" "true")
+              ;; _ (.put env "CLJ-JDBC_DEV" "true")
               proc (.start pb)]
           (reset! proc-state proc)))
-      (babashka.wait/wait-for-port "localhost" 1667)
+      (clj-jdbc.wait/wait-for-port "localhost" 1667)
       (nrepl-test)
       (finally
         (if tu/jvm?

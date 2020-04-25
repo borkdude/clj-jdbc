@@ -3,7 +3,7 @@
 ## Breaking changes
 
 ## v0.0.79
-- [babashka.curl#9](https://github.com/borkdude/babashka.curl/issues/9):
+- [clj-jdbc.curl#9](https://github.com/borkdude/babashka.curl/issues/9):
   BREAKING! Functions in `babashka.curl` like `get`, `post`, etc. now always
   return a map with `:status`, `:body`, and `:headers`.
 

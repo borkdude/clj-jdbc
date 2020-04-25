@@ -1,7 +1,7 @@
-(ns babashka.main-test
+(ns clj-jdbc.main-test
   (:require
-   [babashka.main :as main]
-   [babashka.test-utils :as test-utils]
+   [clj-jdbc.main :as main]
+   [clj-jdbc.test-utils :as test-utils]
    [clojure.edn :as edn]
    [clojure.java.io :as io]
    [clojure.java.shell :refer [sh]]
@@ -29,7 +29,7 @@
   (is (= 123 (bb nil "-e" "(println 123)")))
   (is (= 123 (bb nil "--eval" "(println 123)")))
   (testing "distinguish automatically between expression or file name"
-    (is (= {:result 8080} (bb nil "test/babashka/scripts/tools.cli.bb")))
+    (is (= {:result 8080} (bb nil "test/clj-jdbc/scripts/tools.cli.bb")))
     (is (thrown-with-msg? Exception #"does not exist" (bb nil "foo.clj")))
     (is (thrown-with-msg? Exception #"does not exist" (bb nil "-help"))))
   (is (= "1 2 3" (bb nil "-e" "(require '[clojure.string :as str1])" "-e" "(str1/join \" \" [1 2 3])")))
@@ -98,7 +98,7 @@
     (is (= "2\n" (with-out-str (main/main "(inc 1)"))))))
 
 (deftest System-test
-  (let [res (bb nil "-f" "test/babashka/scripts/System.bb")]
+  (let [res (bb nil "-f" "test/clj-jdbc/scripts/System.bb")]
     (is (= "bar" (second res)))
     (doseq [s res]
       (is (not-empty s))))
@@ -171,8 +171,8 @@
 
 (deftest preloads-test
   ;; THIS TEST REQUIRES:
-  ;; export BABASHKA_PRELOADS='(defn __bb__foo [] "foo") (defn __bb__bar [] "bar")'
-  (when (System/getenv "BABASHKA_PRELOADS_TEST")
+  ;; export CLJ-JDBC_PRELOADS='(defn __bb__foo [] "foo") (defn __bb__bar [] "bar")'
+  (when (System/getenv "CLJ-JDBC_PRELOADS_TEST")
     (is (= "foobar" (bb nil "(str (__bb__foo) (__bb__bar))")))))
 
 (deftest io-test
@@ -234,7 +234,7 @@
     (is (= 1777 (:port (bb nil "(wait/wait-for-port \"127.0.0.1\" 1777)"))))
     (test-utils/stop-server! server)
     (is (= :timed-out (bb nil "(wait/wait-for-port \"127.0.0.1\" 1777 {:default :timed-out :timeout 50})"))))
-  (let [edn (bb nil (io/file "test" "babashka" "scripts" "socket_server.bb"))]
+  (let [edn (bb nil (io/file "test" "clj-jdbc" "scripts" "socket_server.bb"))]
     (is (= "127.0.0.1" (:host edn)))
     (is (=  1777 (:port edn)))
     (is (number? (:took edn)))))
@@ -263,7 +263,7 @@
                            temp-dir-path))))))
 
 (deftest tools-cli-test
-  (is (= {:result 8080} (bb nil "test/babashka/scripts/tools.cli.bb"))))
+  (is (= {:result 8080} (bb nil "test/clj-jdbc/scripts/tools.cli.bb"))))
 
 (deftest try-catch-test
   (is (zero? (bb nil "(try (/ 1 0) (catch ArithmeticException _ 0))")))
@@ -288,7 +288,7 @@
 (deftest csv-test
   (is (= '(["Adult" "87727"] ["Elderly" "43914"] ["Child" "33411"] ["Adolescent" "29849"]
            ["Infant" "15238"] ["Newborn" "10050"] ["In Utero" "1198"])
-         (bb nil (.getPath (io/file "test" "babashka" "scripts" "csv.bb"))))))
+         (bb nil (.getPath (io/file "test" "clj-jdbc" "scripts" "csv.bb"))))))
 
 (deftest assert-test ;; assert was first implemented in bb but moved to sci later
   (is (thrown-with-msg? Exception #"should-be-true"
@@ -348,8 +348,8 @@
   (is (== 8.0 (bb nil "(Math/pow 2 3)"))))
 
 (deftest Base64-test
-  (is (= "babashka"
-         (bb nil "(String. (.decode (java.util.Base64/getDecoder) (.encode (java.util.Base64/getEncoder) (.getBytes \"babashka\"))))"))))
+  (is (= "clj-jdbc"
+         (bb nil "(String. (.decode (java.util.Base64/getDecoder) (.encode (java.util.Base64/getEncoder) (.getBytes \"clj-jdbc\"))))"))))
 
 (deftest Thread-test
   (is (= "hello" (bb nil "(doto (java.lang.Thread. (fn [] (prn \"hello\"))) (.start) (.join)) nil"))))
@@ -360,7 +360,7 @@
 
 (deftest file-in-error-msg-test
   (is (thrown-with-msg? Exception #"error.bb"
-                        (bb nil (.getPath (io/file "test" "babashka" "scripts" "error.bb"))))))
+                        (bb nil (.getPath (io/file "test" "clj-jdbc" "scripts" "error.bb"))))))
 
 (deftest compatibility-test
   (is (true? (bb nil "(set! *warn-on-reflection* true)"))))
@@ -394,7 +394,7 @@
     (is (= "(System/exit 1)" (slurp tmp-file)))))
 
 (deftest unrestricted-access
-  (testing "babashka is allowed to mess with built-in vars"
+  (testing "clj-jdbc is allowed to mess with built-in vars"
     (is (= 1 (bb nil "
 (def inc2 inc) (alter-var-root #'clojure.core/inc (constantly dec))
 (let [res (inc 2)]
@@ -420,7 +420,7 @@
       (is v))))
 
 (deftest download-and-extract-test
-  (is (try (= 6 (bb nil (io/file "test" "babashka" "scripts" "download_and_extract_zip.bb")))
+  (is (try (= 6 (bb nil (io/file "test" "clj-jdbc" "scripts" "download_and_extract_zip.bb")))
            (catch Exception e
              (is (str/includes? (str e) "timed out"))))))
 

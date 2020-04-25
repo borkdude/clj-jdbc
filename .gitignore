@@ -11,9 +11,10 @@ pom.xml.asc
 .hgignore
 .hg/
 /bb
+/clj-jdbc
 .clj-kondo/.cache
-!java/src/babashka/impl/LockFix.class
-!test-resources/babashka/src_for_classpath_test/foo.jar
+!java/src/clj_jdbc/impl/LockFix.class
+!test-resources/clj_jdbc/src_for_classpath_test/foo.jar
 !test-resources/pom.xml
 .cpcache
 *reflection.json

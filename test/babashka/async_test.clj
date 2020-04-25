@@ -1,6 +1,6 @@
-(ns babashka.async-test
+(ns clj-jdbc.async-test
   (:require
-   [babashka.test-utils :as test-utils]
+   [clj-jdbc.test-utils :as test-utils]
    [clojure.edn :as edn]
    [clojure.test :as t :refer [deftest is]]))
 

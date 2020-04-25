@@ -1,7 +1,7 @@
 #!/usr/bin/env bb
 
 ;; to run with clojure: clojure -Sdeps '{:deps {org.clojure/tools.cli {:mvn/version "0.4.2"}}}' examples/tree.clj src
-;; to run with babashka: examples/tree.clj src
+;; to run with clj-jdbc: examples/tree.clj src
 
 (ns tree
   "Tree command, inspired by https://github.com/lambdaisland/birch."

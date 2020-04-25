@@ -1,6 +1,6 @@
-(ns babashka.test-utils
+(ns clj-jdbc.test-utils
   (:require
-   [babashka.main :as main]
+   [clj-jdbc.main :as main]
    [me.raynes.conch :refer [let-programs] :as sh]
    [sci.core :as sci]
    [sci.impl.vars :as vars]))
@@ -48,7 +48,7 @@
              (throw (ex-info err-msg d)))))))
 
 (def bb
-  (case (System/getenv "BABASHKA_TEST_ENV")
+  (case (System/getenv "CLJ-JDBC_TEST_ENV")
     "jvm" #'bb-jvm
     "native" #'bb-native
     #'bb-jvm))

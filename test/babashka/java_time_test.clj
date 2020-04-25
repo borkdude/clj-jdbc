@@ -1,6 +1,6 @@
-(ns babashka.java-time-test
+(ns clj-jdbc.java-time-test
   (:require
-   [babashka.test-utils :as test-utils]
+   [clj-jdbc.test-utils :as test-utils]
    [clojure.edn :as edn]
    [clojure.test :as test :refer [deftest is]]))
 

@@ -1,6 +1,6 @@
-(ns babashka.file-var-test
+(ns clj-jdbc.file-var-test
   (:require
-   [babashka.test-utils :as tu]
+   [clj-jdbc.test-utils :as tu]
    [clojure.string :as str]
    [clojure.test :as t :refer [deftest is]]))
 
@@ -9,8 +9,8 @@
 
 (deftest file-var-test
   (let [[f1 f2 f3 f4]
-        (str/split (bb nil "--classpath" "test/babashka/scripts"
-                       "test/babashka/scripts/file_var.bb")
+        (str/split (bb nil "--classpath" "test/clj-jdbc/scripts"
+                       "test/clj-jdbc/scripts/file_var.bb")
                    #"\n")]
     (is (str/ends-with? f1 "file_var_classpath.bb"))
     (is (str/ends-with? f2 "loaded_by_file_var.bb"))

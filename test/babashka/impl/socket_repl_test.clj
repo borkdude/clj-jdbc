@@ -1,7 +1,7 @@
-(ns babashka.impl.socket-repl-test
+(ns clj-jdbc.impl.socket-repl-test
   (:require
-   [babashka.impl.socket-repl :refer [start-repl! stop-repl!]]
-   [babashka.test-utils :as tu]
+   [clj-jdbc.impl.socket-repl :refer [start-repl! stop-repl!]]
+   [clj-jdbc.test-utils :as tu]
    [clojure.java.io :as io]
    [clojure.java.shell :refer [sh]]
    [clojure.string :as str]

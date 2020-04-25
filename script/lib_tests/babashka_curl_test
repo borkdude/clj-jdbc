@@ -2,16 +2,16 @@
 
 set -eo pipefail
 
-export BABASHKA_CLASSPATH=$(clojure -Sdeps '{:deps {babasha.curl {:local/root "babashka.curl"}}}' -Spath)
+export CLJ-JDBC_CLASSPATH=$(clojure -Sdeps '{:deps {babasha.curl {:local/root "clj-jdbc.curl"}}}' -Spath)
 
-if [ "$BABASHKA_TEST_ENV" = "native" ]; then
+if [ "$CLJ-JDBC_TEST_ENV" = "native" ]; then
     BB_CMD="./bb"
 else
     BB_CMD="lein bb"
 fi
 
 $BB_CMD -e "
-(require '[babashka.curl :as curl] :reload-all)
+(require '[clj-jdbc.curl :as curl] :reload-all)
 
 (prn (:status (curl/get \"https://www.clojure.org\")))
 

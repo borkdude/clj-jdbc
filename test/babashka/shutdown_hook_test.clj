@@ -1,7 +1,7 @@
-(ns babashka.shutdown-hook-test
+(ns clj-jdbc.shutdown-hook-test
   {:no-doc true}
   (:import [java.nio.charset Charset])
-  (:require [babashka.test-utils :as tu]
+  (:require [clj-jdbc.test-utils :as tu]
             [clojure.java.io :as io]
             [clojure.test :refer [deftest is]]))
 

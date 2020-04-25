@@ -1,4 +1,4 @@
-(require '[babashka.wait :as wait])
+(require '[clj-jdbc.wait :as wait])
 
 (defn socket-loop [^java.net.ServerSocket server]
   (with-open [listener server]

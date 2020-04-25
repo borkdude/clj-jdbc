@@ -1,6 +1,6 @@
-(ns babashka.transit-test
+(ns clj-jdbc.transit-test
   (:require
-   [babashka.test-utils :as test-utils]
+   [clj-jdbc.test-utils :as test-utils]
    [clojure.java.io :as io]
    [clojure.test :as t :refer [deftest is]]))
 
@@ -10,4 +10,4 @@
 (deftest transit-test
   (is (= "\"foo\"\n{:a [1 2]}\n"
          (bb (format "(load-file \"%s\")"
-                     (.getPath (io/file "test-resources" "babashka" "transit.clj")))))))
+                     (.getPath (io/file "test-resources" "clj-jdbc" "transit.clj")))))))

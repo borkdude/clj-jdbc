@@ -1,6 +1,6 @@
-(ns babashka.http-connection-test
+(ns clj-jdbc.http-connection-test
   (:require
-   [babashka.test-utils :as tu]
+   [clj-jdbc.test-utils :as tu]
    [clojure.string :as str]
    [clojure.test :as t :refer [deftest is]]))
 
