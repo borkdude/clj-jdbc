@@ -12,6 +12,7 @@ pom.xml.asc
 .hg/
 /bb
 /clj-jdbc
+/clj-jdbc.zip
 .clj-kondo/.cache
 !java/src/clj_jdbc/impl/LockFix.class
 !test-resources/clj_jdbc/src_for_classpath_test/foo.jar

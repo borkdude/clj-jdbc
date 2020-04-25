@@ -6,34 +6,6 @@
 
 Hypothetical command line tool around Clojure database interaction via JDBC.
 
-## Usage
-
-``` shellsession
-Usage: clj-jdbc [--verbose]
-          [ ( --classpath | -cp ) <cp> ]
-          [ ( --main | -m ) <main-namespace> | -e <expression> | -f <file> |
-            --repl | --socket-repl [<host>:]<port> | --nrepl-server [<host>:]<port> ]
-          [ arg* ]
-
-Options:
-
-  --help, -h or -?    Print this help text.
-  --version           Print the current version of clj-jdbc.
-  --verbose           Print entire stacktrace in case of exception.
-
-  -e, --eval <expr>   Evaluate an expression.
-  -f, --file <path>   Evaluate a file.
-  -cp, --classpath    Classpath to use.
-  -m, --main <ns>     Call the -main function from namespace with args.
-  --repl              Start REPL. Use rlwrap for history.
-  --socket-repl       Start socket REPL. Specify port (e.g. 1666) or host and port separated by colon (e.g. 127.0.0.1:1666).
-  --nrepl-server      Start nREPL server. Specify port (e.g. 1667) or host and port separated by colon (e.g. 127.0.0.1:1667).
-  --                  Stop parsing args and pass everything after -- to *command-line-args*
-
-If neither -e, -f, or --socket-repl are specified, then the first argument that is not parsed as a option is treated as a file if it exists, or as an expression otherwise.
-Everything after that is bound to *command-line-args*.
-```
-
 Example:
 
 `jdbc.clj`:
@@ -61,6 +33,34 @@ Example:
 ``` shell
 $ clj-jdbc jdbc.clj
 [{:FOO/X 6}]
+```
+
+## Usage
+
+``` shellsession
+Usage: clj-jdbc [--verbose]
+          [ ( --classpath | -cp ) <cp> ]
+          [ ( --main | -m ) <main-namespace> | -e <expression> | -f <file> |
+            --repl | --socket-repl [<host>:]<port> | --nrepl-server [<host>:]<port> ]
+          [ arg* ]
+
+Options:
+
+  --help, -h or -?    Print this help text.
+  --version           Print the current version of clj-jdbc.
+  --verbose           Print entire stacktrace in case of exception.
+
+  -e, --eval <expr>   Evaluate an expression.
+  -f, --file <path>   Evaluate a file.
+  -cp, --classpath    Classpath to use.
+  -m, --main <ns>     Call the -main function from namespace with args.
+  --repl              Start REPL. Use rlwrap for history.
+  --socket-repl       Start socket REPL. Specify port (e.g. 1666) or host and port separated by colon (e.g. 127.0.0.1:1666).
+  --nrepl-server      Start nREPL server. Specify port (e.g. 1667) or host and port separated by colon (e.g. 127.0.0.1:1667).
+  --                  Stop parsing args and pass everything after -- to *command-line-args*
+
+If neither -e, -f, or --socket-repl are specified, then the first argument that is not parsed as a option is treated as a file if it exists, or as an expression otherwise.
+Everything after that is bound to *command-line-args*.
 ```
 
 The `clojure.core` functions are accessible without a namespace alias.
