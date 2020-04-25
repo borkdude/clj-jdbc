@@ -18,7 +18,6 @@ Example:
 ``` clojure
 (require '[next.jdbc :as jdbc])
 
-
 (defn query []
   (let [db {:dbtype "hsqldb"
             :dbname "mem:testdb"}]
