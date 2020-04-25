@@ -35,6 +35,7 @@ args=( -jar $BABASHKA_JAR \
             -J-Dclojure.compiler.direct-linking=true \
             "-H:IncludeResources=BABASHKA_VERSION" \
             "-H:IncludeResources=SCI_VERSION" \
+            "-H:IncludeResources=.*.properties|.*sql"
             -H:ReflectionConfigurationFiles=reflection.json \
             --initialize-at-run-time=java.lang.Math\$RandomNumberGeneratorHolder \
             --initialize-at-build-time \

@@ -108,6 +108,7 @@
           java.util.zip.GZIPOutputStream
           org.yaml.snakeyaml.error.YAMLException
           ~(symbol "[B")
+          org.hsqldb.jdbcDriver
           ]
     :constructors [clojure.lang.Delay
                    clojure.lang.MapEntry
@@ -187,7 +188,13 @@
              com.sun.xml.internal.stream.XMLInputFactoryImpl
              {:methods [{:name "<init>" :parameterTypes []}]}
              com.sun.xml.internal.stream.XMLOutputFactoryImpl
-             {:methods [{:name "<init>" :parameterTypes []}]}}})
+             {:methods [{:name "<init>" :parameterTypes []}]}
+             org.hsqldb.dbinfo.DatabaseInformationFull
+             {:methods [{:name "<init>"
+                         :parameterTypes ["org.hsqldb.Database"]}]}
+             java.util.ResourceBundle
+             {:methods [{:name "getBundle"
+                         :parameterTypes ["java.lang.String","java.util.Locale","java.lang.ClassLoader"]}]}}})
 
 (defmacro gen-class-map []
   (let [classes (concat (:all classes)
